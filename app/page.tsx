@@ -3,9 +3,16 @@ import SearchBar from "@/components/SearchBar";
 import CustomFilter from "@/components/CustomFilter";
 import { fetchCars } from "@/utils";
 import CarCard from "@/components/CarCard";
+import { HomeProps } from "@/types";
 
-export default async function Home() {
-  const allCars = await fetchCars();
+export default async function Home({ searchParams }: HomeProps) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.model || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
   const isDataEmpty = allCars;
 
   return (
@@ -28,7 +35,7 @@ export default async function Home() {
             {allCars?.map((car: any) => (
               <CarCard car={car} />
             ))}
-           </section>
+          </section>
         ) : (
           <div className="mt-16 flex justify-center items-center flex-col gap-2">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>

@@ -40,7 +40,7 @@ const SearchManufacturer = ({
 
           {/* Input field for searching */}
           <Combobox.Input
-            className="w-full h-[48px] pl-12 p-4 rounded-l-full max-sm:rounded-full bg-light-white outline-none cursor-pointer text-sm"
+            className="w-full h-[48px] pl-12 p-5 rounded-l-full max-sm:rounded-full bg-light-white outline-none cursor-pointer text-sm"
             displayValue={(item: string) => item}
             onChange={(e) => setQuery(e.target.value)} // Update the search query when the input changes
             placeholder="Volkswagen..."
