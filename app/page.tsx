@@ -4,6 +4,7 @@ import CustomFilter from "@/components/CustomFilter";
 import { fetchCars } from "@/utils";
 import CarCard from "@/components/CarCard";
 import { HomeProps } from "@/types";
+import { fuels, yearsOfProduction } from "@/constants";
 
 export default async function Home({ searchParams }: HomeProps) {
   const allCars = await fetchCars({
@@ -26,8 +27,8 @@ export default async function Home({ searchParams }: HomeProps) {
         <div className="mt-12 w-full flex-between items-center flex-wrap gap-5">
           <SearchBar />
           <div className="flex justify-start flex-wrap items-center gap-2">
-            <CustomFilter />
-            <CustomFilter />
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
         {isDataEmpty ? (

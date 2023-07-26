@@ -1,6 +1,6 @@
 import { CarProps, FilterProps } from "@/types";
 
-export const calculateCarRent = (city_mpg: number, year: number) => {
+const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
   const mileageFactor = 0.1; // Additional rate per mile driven
   const ageFactor = 0.05; // Additional rate per year of vehicle age
@@ -15,7 +15,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   return rentalRatePerDay.toFixed(0);
 };
 
-export async function fetchCars(filters: FilterProps) {
+async function fetchCars(filters: FilterProps) {
   const { manufacturer, year, model, limit, fuel } = filters;
 
   const headers = {
@@ -35,7 +35,7 @@ export async function fetchCars(filters: FilterProps) {
   return result;
 }
 
-export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+const generateCarImageUrl = (car: CarProps, angle?: string) => {
   const url = new URL("https://cdn.imagin.studio/getimage");
   const { make, model, year } = car;
   url.searchParams.append("customer", "hrjavascript-mastery");
@@ -48,3 +48,15 @@ export const generateCarImageUrl = (car: CarProps, angle?: string) => {
 
   return `${url}`;
 };
+
+const updateSearchParams = (type: string, value: string) => {
+  // Get the current URL search params
+  const searchParams = new URLSearchParams(window.location.search);
+
+  // Set the specified search parameter to the given value
+  searchParams.set(type, value);
+  // Set the specified search parameter to the given value
+  const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+  return newPathname;
+};
+export { calculateCarRent, fetchCars, generateCarImageUrl, updateSearchParams };

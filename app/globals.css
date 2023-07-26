@@ -10,7 +10,9 @@
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .max-width {
   @apply max-w-[1440px] mx-auto;
 }
@@ -33,4 +35,8 @@
 
 .search-manufacturer__options {
   @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+}
+
+::-webkit-scrollbar {
+  @apply bg-primary-blue w-1;
 }
