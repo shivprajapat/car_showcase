@@ -66,9 +66,10 @@ const CarCard = ({ car }: CarCardProps) => {
         </div>
         <div className="opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 absolute bottom-0 w-full z-10">
           <CustomButton
+            btnType="button"
             title="View More"
-            containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
-            textStyles="text-white text-[14px] leading-[17px] font-bold"
+            containerStyles="w-full rounded-full bg-primary-blue"
+            textStyles="text-white font-bold"
             rightIcon="/right-arrow.svg"
             handleClick={() => setIsOpen(true)}
           />

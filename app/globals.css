@@ -38,5 +38,5 @@ html {
 }
 
 ::-webkit-scrollbar {
-  @apply bg-primary-blue w-1;
+  @apply w-0;
 }

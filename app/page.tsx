@@ -5,6 +5,7 @@ import { fetchCars } from "@/utils";
 import CarCard from "@/components/CarCard";
 import { HomeProps } from "@/types";
 import { fuels, yearsOfProduction } from "@/constants";
+import ShowMore from "@/components/ShowMore";
 
 export default async function Home({ searchParams }: HomeProps) {
   const allCars = await fetchCars({
@@ -32,10 +33,16 @@ export default async function Home({ searchParams }: HomeProps) {
           </div>
         </div>
         {isDataEmpty ? (
-          <section className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
-            {allCars?.map((car: any) => (
-              <CarCard car={car} />
-            ))}
+          <section>
+            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
+              {allCars?.map((car: any) => (
+                <CarCard car={car} />
+              ))}
+            </div>
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className="mt-16 flex justify-center items-center flex-col gap-2">
